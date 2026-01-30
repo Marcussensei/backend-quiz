@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>QuizMaster Pro</span>
+            </div>
+            <div id="auth-status">
+                <span id="user-info">Non connecté</span>
+                <button id="logout-btn" style="display: none; width: auto;">Déconnexion</button>
+            </div>
+        </header>
+
+        <nav id="nav-menu">
+            <button id="auth-section-btn" class="nav-btn active">🔐 Authentification</button>
+            <button id="categories-section-btn" class="nav-btn">📚 Catégories</button>
+            <button id="quiz-section-btn" class="nav-btn">🎯 Quiz</button>
+            <button id="attempts-section-btn" class="nav-btn">📊 Tentatives</button>
+            <button id="admin-section-btn" class="nav-btn" style="display: none;">👑 Admin</button>
+        </nav>
+
+        <!-- Section Authentification -->
+        <section id="auth-section" class="section active">
+            <h2>Authentification</h2>
+
+            <div class="form-group">
+                <h3>📝 Inscription</h3>
+                <input type="text" id="register-name" placeholder="Nom complet">
+                <input type="email" id="register-email" placeholder="Email">
+                <input type="password" id="register-password" placeholder="Mot de passe">
+                <button id="register-btn">S'inscrire</button>
+            </div>
+
+            <div class="form-group">
+                <h3>🔓 Connexion</h3>
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Mot de passe">
+                <button id="login-btn">Se connecter</button>
+                <p class="hint">💡 Admin: admin@test.com / admin123</p>
+            </div>
+
+            <div id="auth-result"></div>
+        </section>
+
+        <!-- Section Catégories -->
+        <section id="categories-section" class="section">
+            <h2>📚 Catégories</h2>
+            <button id="load-categories-btn">Charger les catégories</button>
+            <div id="categories-list"></div>
+
+            <div id="category-detail" style="display: none;">
+                <h3 id="category-title"></h3>
+                <button id="load-category-quizzes-btn">Voir les quiz disponibles</button>
+                <div id="category-quizzes-list"></div>
+            </div>
+        </section>
+
+        <!-- Section Quiz -->
+        <section id="quiz-section" class="section">
+            <h2>🎯 Quiz</h2>
+            <div id="quiz-info">
+                <div class="info-card">
+                    <h3>💡 Comment jouer à un quiz ?</h3>
+                    <ol>
+                        <li>Allez dans l'onglet <strong>"📚 Catégories"</strong></li>
+                        <li>Cliquez sur <strong>"Charger les catégories"</strong></li>
+                        <li>Sélectionnez une catégorie qui vous intéresse</li>
+                        <li>Cliquez sur <strong>"Voir les quiz disponibles"</strong></li>
+                        <li>Choisissez un quiz marqué <strong>"✅ Accessible"</strong></li>
+                        <li>Répondez aux questions une par une</li>
+                        <li>Validez chaque réponse avant de passer à la suivante</li>
+                    </ol>
+                    <p class="hint">🔒 Les quiz verrouillés ne sont pas encore accessibles selon vos progrès.</p>
+                    <button id="go-to-categories-btn" style="margin-top: 15px;">📚 Aller aux catégories</button>
+                </div>
+            </div>
+            <div id="quiz-progress" style="display: none;">
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+                </div>
+                <p style="text-align: center; color: #718096; font-weight: 600; margin-top: 10px;" id="progress-text">Question 1 sur 10</p>
+            </div>
+            <div id="quiz-questions" style="display: none;"></div>
+            <div id="quiz-results" style="display: none;"></div>
+        </section>
+
+        <!-- Section Tentatives -->
+        <section id="attempts-section" class="section">
+            <h2>📊 Mes Tentatives</h2>
+            <button id="load-attempts-btn">Charger mes tentatives</button>
+            <div id="attempts-list"></div>
+
+            <div id="attempt-detail" style="display: none;">
+                <h3>Détail de la tentative</h3>
+                <div id="attempt-results"></div>
+            </div>
+        </section>
+
+        <!-- Section Admin -->
+        <section id="admin-section" class="section">
+            <h2>👑 Administration</h2>
+
+            <div class="form-group">
+                <h3>📈 Statistiques générales</h3>
+                <button id="load-admin-stats-btn">Charger stats admin</button>
+                <div id="admin-stats"></div>
+            </div>
+
+            <div class="form-group">
+                <h3>👥 Gestion des utilisateurs</h3>
+                <button id="load-users-btn">Charger les utilisateurs</button>
+                <div id="users-list"></div>
+            </div>
+        </section>
+
+        <!-- Section de logs -->
+        <section id="logs-section" class="section active" style="display: block;">
+            <h3>📝 Logs des requêtes</h3>
+            <div id="logs-container"></div>
+            <button id="clear-logs-btn" style="margin-top: 15px;">Effacer les logs</button>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
